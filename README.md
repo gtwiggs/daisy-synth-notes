@@ -4,7 +4,15 @@ Learning new software, hardware and concepts requires lots of research and sifti
 
 ## DaisySeed Projects of Interest
 
-- [Setting up VSCode/OpenOCD (XPack)/ST-Link for debugging on MacOS Big Sur](https://forum.pedalpcb.com/threads/setting-up-vscode-openocd-xpack-st-link-for-debugging-on-macos-big-sur.4861/) ~ ST-Link is a debugging probe for the Daisy Seed. NOT plug-and-play!
+- [libDaisy](https://electro-smith.github.io/libDaisy/index.html) ~ C++ hardware support library
+- [Setting up VSCode/OpenOCD (XPack)/ST-Link for debugging on MacOS Big Sur](https://forum.pedalpcb.com/threads/setting-up-vscode-openocd-xpack-st-link-for-debugging-on-macos-big-sur.4861/) ~ ST-Link is a debugging probe for the Daisy Seed. NOT plug-and-play! When plugging in the ribbon cable, ensure the cable is inserted with the ribbon routed **_up_** when the USB port is to the left.
+
+```
+    |  |
+  --|  |----------
+ ]] ....         |
+  ----------------
+```
 
 ## PureData Projects of Interest
 
