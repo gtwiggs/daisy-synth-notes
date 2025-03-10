@@ -4,8 +4,40 @@ Learning new software, hardware and concepts requires lots of research and sifti
 
 ## DaisySeed Projects of Interest
 
+- [DaisySeed Pinout](https://images.squarespace-cdn.com/content/v1/58d03fdc1b10e3bf442567b8/1638921637961-UEMNQ2S8CS4V1M040IVQ/Daisy_Seed_pinout.png)
 - [libDaisy](https://electro-smith.github.io/libDaisy/index.html) ~ C++ hardware support library
-- [Setting up VSCode/OpenOCD (XPack)/ST-Link for debugging on MacOS Big Sur](https://forum.pedalpcb.com/threads/setting-up-vscode-openocd-xpack-st-link-for-debugging-on-macos-big-sur.4861/) ~ ST-Link is a debugging probe for the Daisy Seed. NOT plug-and-play! When plugging in the ribbon cable, ensure the cable is inserted with the ribbon routed **_up_** when the USB port is to the left.
+- [Setting up VSCode/OpenOCD (XPack)/ST-Link for debugging on MacOS Big Sur](https://forum.pedalpcb.com/threads/setting-up-vscode-openocd-xpack-st-link-for-debugging-on-macos-big-sur.4861/) ~ ST-Link is a debugging probe for the Daisy Seed. NOT plug-and-play!
+    - Updated `launch.json` to enable `liveWatch` & remove deprecated `runToMain`:
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "build/FeedbackSynth.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "configFiles": ["interface/stlink.cfg", "target/stm32h7x.cfg"],
+            "openOCDLaunchCommands": ["init", "reset init"],
+            "runToEntryPoint": "main",
+            "liveWatch": { "enabled": true, "samplesPerSecond": 4 },
+            "svdFile": "./.vscode/STM32H750x.svd"
+        }
+    ]
+
+}
+``` 
+- To use ST-Link:
+    - Build executable: `CMD-P task build`
+    - Load program to DaisySeed thru ST-Link by executing shell command: `build program`
+    - [Start a debug session](https://code.visualstudio.com/docs/editor/debugging#_launch-configurations) selecting `Cortex Debug` and clicking the little green > next to it.
+    - Debug sessions must be terminated to re-flash.
+    - When plugging in the ribbon cable, ensure the cable is inserted with the ribbon routed **_up_** when the USB port is to the left.
 
 ```
     |  |
