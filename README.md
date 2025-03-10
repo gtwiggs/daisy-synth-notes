@@ -34,7 +34,7 @@ Learning new software, hardware and concepts requires lots of research and sifti
 ``` 
 - To use ST-Link:
     - Build executable: `CMD-P task build`
-    - Load program to DaisySeed thru ST-Link by executing shell command: `build program`
+    - Load program to DaisySeed thru ST-Link by executing shell command: `make program`
     - [Start a debug session](https://code.visualstudio.com/docs/editor/debugging#_launch-configurations) selecting `Cortex Debug` and clicking the little green > next to it.
     - Debug sessions must be terminated to re-flash.
     - When plugging in the ribbon cable, ensure the cable is inserted with the ribbon routed **_up_** when the USB port is to the left.
